@@ -1,0 +1,3 @@
+RewriteCond %{HTTP_ACCEPT} !image/webp
+RewriteCond %{DOCUMENT_ROOT}/$1.jpg -f
+RewriteRule (.+)\.webp$ $1.jpg [T=image/jpeg,E=REQUEST_image]
