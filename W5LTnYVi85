@@ -1,0 +1,32 @@
+function gdrcd_bbcoder($str) {
+global $MESSAGE;
+$str = gdrcd_close_tags('quote', $str);
+
+$search = [
+    '#\n#',
+    '#\[BR\]#is',
+    '#\[B\](.+?)\[\/B\]#is',
+    '#\[i\](.+?)\[\/i\]#is',
+    '#\[U\](.+?)\[\/U\]#is',
+    '#\[center\](.+?)\[\/center\]#is',
+    '#\[img\](.+?)\[\/img\]#is',
+    '#\[redirect\](.+?)\[\/redirect\]#is',
+    '#\[url=(.+?)\](.+?)\[\/url\]#is',
+    '#\[color=(.+?)\](.+?)\[\/color\]#is',
+    '#\[code\](.+?)\[\/code\]#is'
+];
+$replace = [
+    '<br />',
+    '<br />',
+    '<span style="font-weight: bold;">$1</span>',
+    '<span style="font-style: italic;">$1</span>',
+    '<span style="border-bottom: 1px solid;">$1</span>',
+    '<div style="width:100%; text-align: center;">$1</div>',
+    '<img src="$1">',
+    '<meta http-equiv="Refresh" content="5;url=$1">',
+    '<a href="$1">$2</a>',
+    '<span style="color: $1;">$2</span>',
+    ?????????
+];
+
+return preg_replace($search, $replace, $str);
