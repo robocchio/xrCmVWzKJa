@@ -1,0 +1,9 @@
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+
+s = Service('C:/Usr/Driver/chromedriver.exe')
+driver = webdriver.Chrome(services=s)
+
+base_url = "https://www.website.com/page"
+
+driver.get(base_url)
