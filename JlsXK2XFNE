@@ -1,0 +1,30 @@
+spds = [0,1,2,2,4,5,5,10,9,8,11,12,1,15,4,6,13] #rand data 0-15km
+placehold = []
+spds.sort()                                     #sort low->high
+low = spds[0]                                   #lowest
+high = spds[len(spds)-1]                        #highest
+intr = 5
+lsts = int(high / intr)                         #15/5
+
+for i in range(0, lsts):           #num of lists/intervals
+  placehold.append(i)
+  
+for a in placehold.copy():         
+  if type(placehold[a]) != list:   
+    placehold[a] = []              #create lists for each
+
+for b in spds.copy():              
+    if b >= 0 and b <= 5:          #sort vals by interval
+      placehold[0].append(b)
+      spds.remove(b)
+        
+    elif b > 5 and b <= 10:        #(0-5km), (10-15km) etc.
+      placehold[1].append(b)
+      spds.remove(b)
+      
+    elif b > 10 and b <=15:
+      placehold[2].append(b)       #key: bxehglMvcq
+      spds.remove(b)
+      
+      
+print(placehold)
